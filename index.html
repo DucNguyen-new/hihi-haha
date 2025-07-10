@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Xin lỗi em ❤️</title>
+<style>
+  body {
+    background: #ffe6e6;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 30px;
+    color: #333;
+  }
+  h1 {
+    color: #e6005c;
+    font-size: 3em;
+  }
+  p {
+    font-size: 1.5em;
+    margin: 20px;
+  }
+  .heart {
+    font-size: 100px;
+    color: #ff4d4d;
+    animation: beat 1s infinite;
+  }
+  @keyframes beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+  .button {
+    display: inline-block;
+    margin: 10px;
+    padding: 15px 25px;
+    font-size: 1.2em;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  #forgive {
+    background: #4CAF50;
+  }
+  #forgive:hover {
+    background: #43a047;
+  }
+  #other {
+    background: #e6005c;
+  }
+  #other:hover {
+    background: #cc0052;
+  }
+  #cat {
+    margin-top: 20px;
+    max-width: 250px;
+    border-radius: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="heart">❤️</div>
+<h1>Xin lỗi em!</h1>
+<p>Anh biết anh đã làm em buồn…</p>
+<p>Thật sự anh không cố ý và hun em chụt chụt chụttttt.</p>
+<p>Em có thể tha lỗi cho anh không? 🥺</p>
+
+<img id="cat" src="https://blog.maika.ai/wp-content/uploads/2024/02/anh-meo-meme-11.jpg" alt="meme mèo">
+
+<br>
+
+<button class="button" id="forgive" style="font-size:20px;">Em tha lỗi</button>
+<button class="button" id="other">Deooooo</button>
+
+<script>
+const otherTexts = [
+  "Deooooo", 
+  "Kệ anhhhhhh", 
+  "Em ghét anhhhhhh", 
+  "Có con cak", 
+  "Đừng mơ", 
+  "Ghét vlonnnn", 
+  "Anh phải nấu cơm cho emmmmmmmm"
+];
+
+const catImages = [
+  "https://hoseiki.vn/wp-content/uploads/2025/03/meme-meo-19.jpg",
+  "https://anhnail.vn/wp-content/uploads/2024/10/meme-meo-khoc-2.webp",
+  "https://cdn-media.sforum.vn/storage/app/media/quynh/meme-meo-khoc-20.jpg",
+  "https://cdn.mobilecity.vn/mobilecity-vn/images/2024/11/top-meme-meo-cuc-dang-yeu-49.png.webp",
+  "https://blog.maika.ai/wp-content/uploads/2024/02/anh-meo-meme-13.jpg"
+];
+
+let forgiveBtn = document.getElementById("forgive");
+let otherBtn = document.getElementById("other");
+let catImg = document.getElementById("cat");
+
+// trả về 1 text khác với text hiện tại
+function getNewOtherText(current) {
+  const choices = otherTexts.filter(t => t !== current);
+  return choices[Math.floor(Math.random() * choices.length)];
+}
+
+// trả về 1 ảnh mèo khác
+function getNewCat(current) {
+  const choices = catImages.filter(src => src !== current);
+  return choices[Math.floor(Math.random() * choices.length)];
+}
+
+otherBtn.onclick = function() {
+  // đổi text nút khác
+  const newText = getNewOtherText(otherBtn.textContent);
+  otherBtn.textContent = newText;
+
+  // tăng size nút Em tha lỗi
+  let currentSize = parseInt(window.getComputedStyle(forgiveBtn).fontSize);
+  forgiveBtn.style.fontSize = (currentSize + 10) + "px";
+
+  // đổi ảnh mèo
+  const newCat = getNewCat(catImg.src);
+  catImg.src = newCat;
+}
+
+forgiveBtn.onclick = function() {
+  document.body.innerHTML = `
+    <div class="heart">💖</div>
+    <img id="cat" src="https://macshop24h.com/wp-content/uploads/2025/04/Meme-Meo-Cuoi-5-1.jpg" alt="meme mèo">
+    <h1>Anh yêu em! 😘</h1>
+    <p>Để tối em về nấu cơm cho baby của em nhóe . ô cê lunnnn.</p>
+  `;
+}
+</script>
+
+</body>
+</html>
